@@ -132,3 +132,11 @@ function calculerProgression(apprenant) {
 }
 // //************************************* */
 
+function filtrerParNiveau(niveau) {
+  return apprenants.filter(function (a) {
+    let stats = calculerProgression(a);
+    return stats.niveau.toLowerCase() === niveau.toLowerCase();
+  });
+}
+
+// //************************************* */

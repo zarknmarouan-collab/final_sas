@@ -13,3 +13,15 @@ function validerResultat(realises, proposes) {
   return true;
 }
 //==============================================/
+function ajouterApprenant(nom, ville) {
+  let apprenant = {
+    id: apprenants.length + 1,
+    nomComplet: normaliserNom(nom),
+    ville: ville,
+    resultats: [],
+  };
+  apprenants.push(apprenant);
+  return apprenant;
+}
+
+// //************************************* */

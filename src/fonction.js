@@ -79,3 +79,56 @@ function rechercherApprenant(recherche) {
 }
 
 // //************************************* */
+
+
+function calculerProgression(apprenant) {
+  let totalTermines = 0;
+  let totalProposes = 0;
+  let challengesTermines = 0;
+
+  apprenant.resultats.forEach(function (r) {
+    totalTermines += r.exercicesTermines;
+    totalProposes += r.totalExercices;
+    if (r.challengeTermine) {
+      challengesTermines++;
+    }
+  });
+  let pourcentage = 0;
+  if (totalProposes > 0) {
+    pourcentage = Math.round((totalTermines / totalProposes) * 100);
+  }
+  let niveau = "À renforcer";
+  if (pourcentage >= 80) {
+    niveau = "Solide";
+  } else if (pourcentage >= 50) {
+    niveau = "En progression";
+  }
+
+  let joursManquants = [];
+  let challengesManquants = [];
+
+  for (let j = 1; j <= 7; j++) {
+    let res = apprenant.resultats.find(function (r) {
+      return r.jour === j;
+    });
+
+    if (!res) {
+      joursManquants.push(j);
+       challengesManquants.push(j);
+    } else if (!res.challengeTermine) {
+      challengesManquants.push(j);
+    }
+  }
+  return {
+    totalTermines: totalTermines,
+    totalProposes: totalProposes,
+    pourcentage: pourcentage,
+    niveau: niveau,
+    challengesTermines: challengesTermines,
+    journeesRenseignees: apprenant.resultats.length,
+    joursManquants: joursManquants,
+    challengesManquants: challengesManquants,
+  };
+}
+// //************************************* */
+

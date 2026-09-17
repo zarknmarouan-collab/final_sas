@@ -63,3 +63,19 @@ function enregistrerResultat(
 }
 
 // //************************************* */
+
+function rechercherApprenant(recherche) {
+  if (!isNaN(recherche)) {
+    let idNum = Number(recherche);
+    return apprenants.filter(function (a) {
+      return a.id === idNum;
+    });
+  }
+
+  let recherchePropre = recherche.trim().toLowerCase();
+  return apprenants.filter(function (a) {
+    return a.nomComplet.toLowerCase().includes(recherchePropre);
+  });
+}
+
+// //************************************* */

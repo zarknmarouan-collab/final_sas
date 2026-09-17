@@ -140,3 +140,12 @@ function filtrerParNiveau(niveau) {
 }
 
 // //************************************* */
+function trierParProgression() {
+  return apprenants.slice().sort(function (a, b) {
+    let statsA = calculerProgression(a);
+    let statsB = calculerProgression(b);
+    return statsB.pourcentage - statsA.pourcentage;
+  });
+}
+
+//************************************* */

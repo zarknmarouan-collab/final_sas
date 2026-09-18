@@ -156,3 +156,13 @@ function trierAlphabetique() {
 }
 
 // **************************************
+function afficherApprenants() {
+  console.log("\n===== LIST DE APPRENANTS =====");
+  for (let apprenant of apprenants) {
+    console.log("ID :" + apprenant.id);
+    console.log("Nom :" + apprenant.nomComplet);
+    console.log("Ville :" + apprenant.ville);
+  }
+}
+
+// **************************************

@@ -29,4 +29,14 @@ console.log("\n====== MENU PRINCIPAL ======");
 
   choix = prompt("Votre choix : ").trim();
 
+  switch (choix) {
+
+     case "0":
+      console.log("Au revoir !");
+      break;
+
+  default:
+      console.log("Choix invalide !");
+  }
+
 } while (choix !== "0");

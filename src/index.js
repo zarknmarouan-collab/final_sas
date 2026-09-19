@@ -37,6 +37,9 @@ console.log("\n====== MENU PRINCIPAL ======");
       case "1":
       afficherTableauDeBord(apprenants);
       break;
+      case "2":
+      afficherApprenants(apprenants);
+      break;
 
   default:
       console.log("Choix invalide !");

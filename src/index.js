@@ -91,6 +91,31 @@ case "4":
       }
 
       break;
+ case "5":
+      let nomRecherche;
+
+      do {
+        nomRecherche = prompt("Entrer le nom : ").trim();
+
+        if (nomRecherche === "") {
+          console.log("Erreur : le nom ne peut pas être vide.");
+        }
+      } while (nomRecherche === "");
+
+      let resultatNom = rechercherApprenant(nomRecherche);
+
+      if (resultatNom.length === 0) {
+        console.log("Aucun apprenant trouvé avec ce nom.");
+      } else {
+        for (let apprenant of resultatNom) {
+          console.log("\n===== APPRENANT TROUVÉ =====");
+          console.log(`ID : ${apprenant.id}`);
+          console.log(`Nom : ${apprenant.nomComplet}`);
+          console.log(`Ville : ${apprenant.ville}`);
+        }
+      }
+
+      break;
 
 
   default:

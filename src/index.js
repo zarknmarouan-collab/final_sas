@@ -66,6 +66,31 @@ console.log("\n====== MENU PRINCIPAL ======");
 
       console.log("Apprenant ajouté avec succès !");
       break;
+case "4":
+      let idConsultation;
+
+      do {
+        idConsultation = Number(prompt("Entrer l'identifiant : "));
+
+        if (!Number.isInteger(idConsultation) || idConsultation <= 0) {
+          console.log("Erreur : veuillez entrer un identifiant valide.");
+        }
+      } while (!Number.isInteger(idConsultation) || idConsultation <= 0);
+
+      let resultatID = rechercherApprenant(idConsultation);
+
+      if (resultatID.length === 0) {
+        console.log("Aucun apprenant trouvé avec cet identifiant.");
+      } else {
+        for (let apprenant of resultatID) {
+          console.log("\n===== APPRENANT TROUVÉ =====");
+          console.log(`ID : ${apprenant.id}`);
+          console.log(`Nom : ${apprenant.nomComplet}`);
+          console.log(`Ville : ${apprenant.ville}`);
+        }
+      }
+
+      break;
 
 
   default:

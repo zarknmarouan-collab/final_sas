@@ -40,6 +40,33 @@ console.log("\n====== MENU PRINCIPAL ======");
       case "2":
       afficherApprenants(apprenants);
       break;
+       case "3":
+      let nom;
+
+      do {
+        nom = prompt("Entrer le nom : ").trim();
+
+        if (nom === "") {
+          console.log("Erreur : le nom ne peut pas être vide.");
+        }
+      } while (nom === "");
+
+      let ville;
+
+      do {
+        ville = prompt("Entrer la ville : ").trim();
+
+        if (ville === "") {
+          console.log("Erreur : la ville ne peut pas être vide.");
+        }
+      } while (ville === "");
+
+      let nouvelApprenant = ajouterApprenant(nom, ville);
+      console.log(`Identifiant : ${nouvelApprenant.id}`);
+
+      console.log("Apprenant ajouté avec succès !");
+      break;
+
 
   default:
       console.log("Choix invalide !");

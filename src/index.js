@@ -249,6 +249,59 @@ case "4":
         }
       }
       break;
+        case "8":
+      let choixTrie;
+
+      do {
+        console.log("\n========== SOUS-MENU TRI ==========");
+        console.log("1. Trier par progression décroissante");
+        console.log("2. Trier par ordre alphabétique");
+        console.log("0. Retour au menu principal");
+
+        choixTrie = prompt("Votre choix : ").trim();
+
+        switch (choixTrie) {
+          case "1":
+            let trieProg = trierParProgression();
+
+            console.log("\n===== TRI PAR PROGRESSION =====");
+            for (let apprenant of trieProg) {
+              let progression = calculerProgression(apprenant);
+
+              console.log(`\nID : ${apprenant.id}`);
+              console.log(`Nom : ${apprenant.nomComplet}`);
+              console.log(`Ville : ${apprenant.ville}`);
+              console.log(`Progression : ${progression.pourcentage}%`);
+              console.log(`Niveau : ${progression.niveau}`);
+            }
+
+            break;
+
+          case "2":
+            let trieAlpha = trierAlphabetique();
+
+            console.log("\n===== TRI ALPHABÉTIQUE =====");
+            for (let apprenant of trieAlpha) {
+              let progression = calculerProgression(apprenant);
+
+              console.log(`\nID : ${apprenant.id}`);
+              console.log(`Nom : ${apprenant.nomComplet}`);
+              console.log(`Ville : ${apprenant.ville}`);
+              console.log(`Progression : ${progression.pourcentage}%`);
+              console.log(`Niveau : ${progression.niveau}`);
+            }
+
+            break;
+
+          case "0":
+            break;
+
+          default:
+            console.log("Erreur : choisissez 1, 2 ou 0.");
+        }
+      } while (choixTrie !== "0");
+
+      break;
 
   default:
       console.log("Choix invalide !");

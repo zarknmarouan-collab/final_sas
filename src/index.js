@@ -117,6 +117,102 @@ case "4":
 
       break;
 
+    case "6":
+      let id;
+      let apprenantExiste;
+
+      do {
+        id = Number(prompt("Entrer l'identifiant : "));
+
+        apprenantExiste = apprenants.find(function (apprenant) {
+          return apprenant.id === id;
+        });
+
+        if (!Number.isInteger(id) || id <= 0) {
+          console.log("Erreur : veuillez entrer un identifiant valide.");
+        } else if (apprenantExiste === undefined) {
+          console.log("Erreur : apprenant introuvable.");
+        }
+      } while (
+        !Number.isInteger(id) ||
+        id <= 0 ||
+        apprenantExiste === undefined
+      );
+
+      let jour;
+
+      do {
+        jour = Number(prompt("Entrer le numéro de journée (1-7) : "));
+
+        if (!Number.isInteger(jour) || jour < 1 || jour > 7) {
+          console.log("Erreur : la journée doit être comprise entre 1 et 7.");
+        }
+      } while (!Number.isInteger(jour) || jour < 1 || jour > 7);
+
+      let exercicesProposes;
+
+      do {
+        exercicesProposes = Number(
+          prompt("Entrer le nombre d'exercices proposés : "),
+        );
+
+        if (!Number.isInteger(exercicesProposes) || exercicesProposes < 0) {
+          console.log("Erreur : entrez un nombre entier positif ou égal à 0.");
+        }
+      } while (!Number.isInteger(exercicesProposes) || exercicesProposes < 0);
+
+      let exercicesTermines;
+
+      do {
+        exercicesTermines = Number(
+          prompt("Entrer le nombre d'exercices terminés : "),
+        );
+
+        if (
+          !Number.isInteger(exercicesTermines) ||
+          exercicesTermines < 0 ||
+          exercicesTermines > exercicesProposes
+        ) {
+          console.log(
+            "Erreur : le nombre terminé doit être entre 0 et le nombre proposé.",
+          );
+        }
+      } while (
+        !Number.isInteger(exercicesTermines) ||
+        exercicesTermines < 0 ||
+        exercicesTermines > exercicesProposes
+      );
+
+      let challenge;
+
+      do {
+        challenge = prompt("Challenge terminé ? (oui/non) : ")
+          .trim()
+          .toLowerCase();
+
+        if (challenge !== "oui" && challenge !== "non") {
+          console.log("Erreur : répondez uniquement par oui ou non.");
+        }
+      } while (challenge !== "oui" && challenge !== "non");
+
+      let challengeTermine = challenge === "oui";
+
+      let resultat = enregistrerResultat(
+        id,
+        jour,
+        exercicesProposes,
+        exercicesTermines,
+        challengeTermine,
+      );
+
+      if (resultat) {
+        console.log("Résultat enregistré avec succès !");
+      } else {
+        console.log("Erreur lors de l'enregistrement.");
+      }
+
+      break;
+
 
   default:
       console.log("Choix invalide !");

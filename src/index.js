@@ -212,7 +212,43 @@ case "4":
       }
 
       break;
+         case "7":
+      let niveau;
 
+      do {
+        niveau = prompt("Entrer le niveau : ").trim();
+
+        if (
+          niveau.toLowerCase() !== "solide" &&
+          niveau.toLowerCase() !== "en progression" &&
+          niveau.toLowerCase() !== "à renforcer"
+        ) {
+          console.log(
+            "Erreur : choisissez Solide, En progression ou À renforcer.",
+          );
+        }
+      } while (
+        niveau.toLowerCase() !== "solide" &&
+        niveau.toLowerCase() !== "en progression" &&
+        niveau.toLowerCase() !== "à renforcer"
+      );
+
+      let resultatNiveau = filtrerParNiveau(niveau);
+
+      if (resultatNiveau.length === 0) {
+        console.log("Aucun apprenant trouvé pour ce niveau.");
+      } else {
+        console.log(`\n===== APPRENANTS : ${niveau} =====`);
+
+        for (let apprenant of resultatNiveau) {
+          let progression = calculerProgression(apprenant);
+
+          console.log(`\nID : ${apprenant.id}`);
+          console.log(`Nom : ${apprenant.nomComplet}`);
+          console.log(`Ville : ${apprenant.ville}`);
+        }
+      }
+      break;
 
   default:
       console.log("Choix invalide !");

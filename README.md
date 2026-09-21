@@ -72,14 +72,17 @@ localeCompare()
 Projet_finale/
 │
 ├── README.md
-├── package.json
-├── package-lock.json
-│
 └── src/
     ├── Data.js
     ├── fonctions.js
     └── index.js
 ```
+Description des fichiers:
+ data.js : contient les données des apprenants.
+ progression.js : contient les fonctions principales de l'application.
+ index.js : contient le menu et l'interaction avec l'utilisateur.
+ scenarios.js : contient les scénarios de test.
+ README.md : présente et explique le projet.
 
 ### `src/Data.js`
 
